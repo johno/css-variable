@@ -13,11 +13,13 @@ npm install --save css-variable
 ```javascript
 var cssVariable = require('css-variable')
 
-cssVariable.css('--blue').sass()  // => $blue
-cssVariable.css('var(--blue)').less()  // => @blue
-cssVariable.stylus('blue').css()  // => '--blue'
-cssVariable.css('var(--blue)').cssDecl()  // => '--blue'
-cssVariable.css('--blue').cssVal()  // => 'var(--blue)'
+cssVariable('--blue').sass()  // => '$blue'
+cssVariable('var(--blue)').less()  // => '@blue'
+cssVariable('var(--blue)').stylus()  // => 'blue'
+cssVariable('blue').css()  // => '--blue'
+cssVariable('var(--blue)').cssDecl()  // => '--blue'
+cssVariable('--blue').cssVal()  // => 'var(--blue)'
+cssVariable('var(--blue)').base()  // => 'blue'
 ```
 
 ## License

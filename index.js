@@ -19,13 +19,13 @@ var CssVariable = function (variable) {
   this.variable = variable
 
   if (this.isCustomProperty()) {
-    this.base = this.stripCustomPropertySyntax()
+    this.variableBase = this.stripCustomPropertySyntax()
   } else if (this.isSassVariable()) {
-    this.base = this.stripSassSyntax()
+    this.variableBase = this.stripSassSyntax()
   } else if (this.isLessVariable()) {
-    this.base = this.stripLessSyntax()
+    this.variableBase = this.stripLessSyntax()
   } else {
-    this.base = this.variable
+    this.variableBase = this.variable
   }
 }
 
@@ -49,17 +49,29 @@ CssVariable.prototype = {
   stripLessSyntax: function (variable) {
     return stripLessSyntax(variable || this.variable)
   },
-  getBase: function () {
-    return this.base
+  base: function () {
+    return this.variableBase
   },
-  getSass: function () {
-    return '$' + this.base
+  css: function () {
+    return '--' + this.variableBase
   },
-  getLess: function () {
-    return '@' + this.base
+  cssDecl: function () {
+    return this.css()
   },
-  getStylus: function () {
-    return this.base
+  cssFunc: function () {
+    return 'var(--' + this.variableBase + ')'
+  },
+  cssVal: function () {
+    return this.cssFunc()
+  },
+  sass: function () {
+    return '$' + this.variableBase
+  },
+  less: function () {
+    return '@' + this.variableBase
+  },
+  stylus: function () {
+    return this.variableBase
   }
 }
 

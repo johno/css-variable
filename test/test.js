@@ -4,16 +4,20 @@ var test = require('tape')
 var cssVariable = require('..')
 
 test('css-variable', function (t) {
-  t.plan(20)
+  t.plan(40)
 
   var variables = ['var(--foo-bar)', '--foo-bar', 'foo-bar', '$foo-bar', '@foo-bar']
 
   variables.forEach(function (variable) {
     var cssVar = cssVariable(variable)
-    t.equal(cssVar.getBase(), 'foo-bar')
-    t.equal(cssVar.getSass(), '$foo-bar')
-    t.equal(cssVar.getLess(), '@foo-bar')
-    t.equal(cssVar.getStylus(), 'foo-bar')
+    t.equal(cssVar.base(), 'foo-bar')
+    t.equal(cssVar.sass(), '$foo-bar')
+    t.equal(cssVar.less(), '@foo-bar')
+    t.equal(cssVar.stylus(), 'foo-bar')
+    t.equal(cssVar.css(), '--foo-bar')
+    t.equal(cssVar.cssDecl(), '--foo-bar')
+    t.equal(cssVar.cssFunc(), 'var(--foo-bar)')
+    t.equal(cssVar.cssVal(), 'var(--foo-bar)')
   })
 })
 
