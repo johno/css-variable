@@ -74,6 +74,9 @@ CssVariable.prototype = {
   sass: function () {
     return '$' + this.variableBase
   },
+  scss: function () {
+    return this.sass()
+  },
   less: function () {
     return '@' + this.variableBase
   },

@@ -4,7 +4,7 @@ var test = require('tape')
 var cssVariable = require('..')
 
 test('css-variable', function (t) {
-  t.plan(40)
+  t.plan(45)
 
   var variables = ['var(--foo-bar)', '--foo-bar', 'foo-bar', '$foo-bar', '@foo-bar']
 
@@ -12,6 +12,7 @@ test('css-variable', function (t) {
     var cssVar = cssVariable(variable)
     t.equal(cssVar.base(), 'foo-bar')
     t.equal(cssVar.sass(), '$foo-bar')
+    t.equal(cssVar.scss(), '$foo-bar')
     t.equal(cssVar.less(), '@foo-bar')
     t.equal(cssVar.stylus(), 'foo-bar')
     t.equal(cssVar.css(), '--foo-bar')
