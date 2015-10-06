@@ -24,43 +24,43 @@ test('css-variable', function (t) {
 test('is-custom-property', function (t) {
   t.plan(3)
 
-  t.ok(cssVariable().isCustomProperty('--foo'))
-  t.ok(cssVariable().isCustomProperty('var(--foo)'))
-  t.ok(!cssVariable().isCustomProperty('blah--blah'))
+  t.ok(cssVariable('awesome-var').isCustomProperty('--foo'))
+  t.ok(cssVariable('awesome-var').isCustomProperty('var(--foo)'))
+  t.ok(!cssVariable('awesome-var').isCustomProperty('blah--blah'))
 })
 
 test('strip-custom-property-syntax', function (t) {
   t.plan(3)
 
-  t.equal(cssVariable().stripCustomPropertySyntax('--foo'), 'foo')
-  t.equal(cssVariable().stripCustomPropertySyntax('var(--foo)'), 'foo')
-  t.equal(cssVariable().stripCustomPropertySyntax('blah--blah'), 'blah--blah')
+  t.equal(cssVariable('awesome-var').stripCustomPropertySyntax('--foo'), 'foo')
+  t.equal(cssVariable('awesome-var').stripCustomPropertySyntax('var(--foo)'), 'foo')
+  t.equal(cssVariable('awesome-var').stripCustomPropertySyntax('blah--blah'), 'blah--blah')
 })
 
 test('is-sass-variable', function(t) {
   t.plan(2)
 
-  t.ok(cssVariable().isSassVariable('$foo'))
-  t.ok(!cssVariable().isSassVariable('blah'))
+  t.ok(cssVariable('awesome-var').isSassVariable('$foo'))
+  t.ok(!cssVariable('awesome-var').isSassVariable('blah'))
 })
 
 test('strip-sass-syntax', function(t) {
   t.plan(2)
 
-  t.equal(cssVariable().stripSassSyntax('$foo'), 'foo')
-  t.equal(cssVariable().stripSassSyntax('blah'), 'blah')
+  t.equal(cssVariable('awesome-var').stripSassSyntax('$foo'), 'foo')
+  t.equal(cssVariable('awesome-var').stripSassSyntax('blah'), 'blah')
 })
 
 test('is-less-variable', function(t) {
   t.plan(2)
 
-  t.ok(cssVariable().isLessVariable('@foo'))
-  t.ok(!cssVariable().isLessVariable('blah'))
+  t.ok(cssVariable('awesome-var').isLessVariable('@foo'))
+  t.ok(!cssVariable('awesome-var').isLessVariable('blah'))
 })
 
 test('strip-less-syntax', function(t) {
   t.plan(2)
 
-  t.equal(cssVariable().stripLessSyntax('@foo'), 'foo')
-  t.equal(cssVariable().stripLessSyntax('blah'), 'blah')
+  t.equal(cssVariable('awesome-var').stripLessSyntax('@foo'), 'foo')
+  t.equal(cssVariable('awesome-var').stripLessSyntax('blah'), 'blah')
 })

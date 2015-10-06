@@ -1,8 +1,11 @@
 'use strict'
 
+var isBlank = require('is-blank')
+
 var isCustomProperty = require('./util/is-custom-property')
 var isSassVariable = require('./util/is-sass-variable')
 var isLessVariable = require('./util/is-less-variable')
+
 var stripCustomPropertySyntax = require('./util/strip-custom-property-syntax')
 var stripSassSyntax = require('./util/strip-sass-syntax')
 var stripLessSyntax = require('./util/strip-less-syntax')
@@ -14,6 +17,10 @@ var CssVariable = function (variable) {
 
   if (!(this instanceof CssVariable)) {
     return new CssVariable(variable)
+  }
+
+  if (typeof variable !== 'string' || isBlank(variable)) {
+    throw new TypeError('css-variable expected a string')
   }
 
   this.variable = variable

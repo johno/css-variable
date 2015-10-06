@@ -15,15 +15,15 @@
     "type": "git",
     "url": "https://github.com/johnotander/css-variable.git"
   },
-  "keywords": [
-
-  ],
+  "keywords": [],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/johnotander/css-variable/issues"
   },
   "homepage": "https://github.com/johnotander/css-variable",
-  "dependencies": {},
+  "dependencies": {
+    "is-blank": "^1.0.0"
+  },
   "devDependencies": {
     "tape": "*",
     "tap-dot": "*",
