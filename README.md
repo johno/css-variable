@@ -13,7 +13,11 @@ npm install --save css-variable
 ```javascript
 var cssVariable = require('css-variable')
 
-cssVariable()  // => true
+cssVariable.css('--blue').sass()  // => $blue
+cssVariable.css('var(--blue)').less()  // => @blue
+cssVariable.stylus('blue').css()  // => '--blue'
+cssVariable.css('var(--blue)').cssDecl()  // => '--blue'
+cssVariable.css('--blue').cssVal()  // => 'var(--blue)'
 ```
 
 ## License
