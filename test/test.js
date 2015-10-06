@@ -3,6 +3,20 @@
 var test = require('tape')
 var cssVariable = require('..')
 
+test('css-variable', function (t) {
+  t.plan(20)
+
+  var variables = ['var(--foo-bar)', '--foo-bar', 'foo-bar', '$foo-bar', '@foo-bar']
+
+  variables.forEach(function (variable) {
+    var cssVar = cssVariable(variable)
+    t.equal(cssVar.getBase(), 'foo-bar')
+    t.equal(cssVar.getSass(), '$foo-bar')
+    t.equal(cssVar.getLess(), '@foo-bar')
+    t.equal(cssVar.getStylus(), 'foo-bar')
+  })
+})
+
 test('is-custom-property', function (t) {
   t.plan(3)
 

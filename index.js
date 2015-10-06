@@ -17,16 +17,50 @@ var CssVariable = function (variable) {
   }
 
   this.variable = variable
+
+  if (this.isCustomProperty()) {
+    this.base = this.stripCustomPropertySyntax()
+  } else if (this.isSassVariable()) {
+    this.base = this.stripSassSyntax()
+  } else if (this.isLessVariable()) {
+    this.base = this.stripLessSyntax()
+  } else {
+    this.base = this.variable
+  }
 }
 
 
 CssVariable.prototype = {
-  isCustomProperty: isCustomProperty,
-  isSassVariable: isSassVariable,
-  isLessVariable: isLessVariable,
-  stripCustomPropertySyntax: stripCustomPropertySyntax,
-  stripSassSyntax: stripSassSyntax,
-  stripLessSyntax: stripLessSyntax
+  isCustomProperty: function (variable) {
+    return isCustomProperty(variable || this.variable)
+  },
+  isSassVariable: function (variable) {
+    return isSassVariable(variable || this.variable)
+  },
+  isLessVariable: function (variable) {
+    return isLessVariable(variable || this.variable)
+  },
+  stripCustomPropertySyntax: function (variable) {
+    return stripCustomPropertySyntax(variable || this.variable)
+  },
+  stripSassSyntax: function (variable) {
+    return stripSassSyntax(variable || this.variable)
+  },
+  stripLessSyntax: function (variable) {
+    return stripLessSyntax(variable || this.variable)
+  },
+  getBase: function () {
+    return this.base
+  },
+  getSass: function () {
+    return '$' + this.base
+  },
+  getLess: function () {
+    return '@' + this.base
+  },
+  getStylus: function () {
+    return this.base
+  }
 }
 
 module.exports = CssVariable
