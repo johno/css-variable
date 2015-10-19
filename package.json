@@ -1,15 +1,19 @@
 {
   "name": "css-variable",
   "description": "A CSS variable transformer, supports Less, Sass, stylus and custom properties.",
-  "author": "John Otander",
   "version": "1.0.0",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
+  "author": {
+    "name": "John Otander",
+    "email": "johnotander@gmail.com",
+    "url": "johnotander.com"
   },
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "util"
+  ],
   "scripts": {
-    "test": "tape test/test.js | tap-dot",
-    "jshint": "standard"
+    "test": "ava"
   },
   "repository": {
     "type": "git",
@@ -34,8 +38,6 @@
     "is-blank": "^1.0.0"
   },
   "devDependencies": {
-    "tape": "*",
-    "tap-dot": "*",
-    "standard": "*"
+    "ava": "^0.2.0"
   }
 }
