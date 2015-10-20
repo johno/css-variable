@@ -1,7 +1,7 @@
 {
   "name": "css-variable",
   "description": "A CSS variable transformer, supports Less, Sass, stylus and custom properties.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "John Otander",
     "email": "johnotander@gmail.com",
